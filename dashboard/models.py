@@ -6,5 +6,27 @@ from django.contrib.auth.models import User
 class Board(models.Model):
     title = models.CharField(max_length=15)
     slug = models.SlugField(max_length=15, unique=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='boards')
+    owner = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='boards'
+    )
     created_on = models.DateTimeField(auto_now_add=True)
+    excerpt = models.CharField(max_length=500, blank=True)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return f'The board {self.title} is owned by {self.owner}'
+
+
+class Comment(models.Model):
+    board = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    content = models.TextField(max_length=100)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return f'Comment by {self.author} on {self.board}'
