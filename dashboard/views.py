@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Board
 
 
 # Create your views here.
-def my_dashboard(request):
-    return HttpResponse("Hello, World!")
+class MyDashboardView(generic.ListView):
+    queryset = Board.objects.all()
+    template_name = 'dashboard/dashboard.html'
+    context_object_name = 'object_list'

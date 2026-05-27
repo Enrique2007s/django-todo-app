@@ -16,7 +16,7 @@ class Board(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return f'The board {self.title} is owned by {self.owner}'
+        return f'Board: {self.title}, owned by {self.owner}'
 
 
 class Comment(models.Model):
