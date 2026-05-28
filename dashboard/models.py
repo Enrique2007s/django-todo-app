@@ -21,7 +21,7 @@ class Board(models.Model):
 
 class Comment(models.Model):
     board = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='comments')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
     content = models.TextField(max_length=100)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -29,4 +29,4 @@ class Comment(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return f'Comment by {self.author} on {self.board}'
+        return f'Comment by {self.owner} on {self.board}'

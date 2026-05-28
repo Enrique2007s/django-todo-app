@@ -8,3 +8,4 @@ class MyDashboardView(generic.ListView):
     queryset = Board.objects.all()
     template_name = 'dashboard/dashboard.html'
     context_object_name = 'object_list'
+    paginate_by = 8

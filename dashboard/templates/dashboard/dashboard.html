@@ -1,26 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h1 class="h3 mb-1">Dashboard</h1>
+            <p class="text-muted mb-0">Browse your boards below.</p>
+        </div>
+    </div>
 
-<body>
-    <h1>Welcome to the Dashboard</h1>
-    <p>This is where you can manage your tasks and boards.</p>
-     {% for post in object_list %}
-     <h2>
-         {{ post.title }}
-     </h2>
-     <p>
-         {{ post.excerpt }}
-     </p>
-     <p>
-         {{ post.owner}}
-     </p>
-     {% endfor %}
-</body>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        {% for board in object_list %}
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title mb-2">{{ board.title }}</h5>
+                    <p class="card-text text-muted flex-grow-1">{{ board.excerpt }}</p>
+                    <div class="mt-3 pt-3 border-top small text-body-secondary">
+                        <a href="#" class="btn btn-outline-primary btn-sm mb-2">View Board</a>
 
-</html>
+                        <p class="mb-1"><strong>Owner:</strong> {{ board.owner }}</p>
+                        <p class="mb-0"><strong>Created:</strong> {{ board.created_on }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info mb-0">No boards available yet.</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if is_paginated and page_obj.has_next %}
+    <div class="d-flex justify-content-center mt-4">
+        <a class="btn btn-primary" href="?page={{ page_obj.next_page_number }}">Next</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}
