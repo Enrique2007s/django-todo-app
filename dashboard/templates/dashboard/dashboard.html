@@ -4,8 +4,8 @@
 <div class="container py-4">
     <div class="d-flex align-items-center justify-content-between mb-4">
         <div>
-            <h1 class="h3 mb-1">Dashboard</h1>
-            <p class="text-muted mb-0">Browse your boards below.</p>
+            <h1 class="h3 mb-1 dashboard-title">Dashboard</h1>
+            <p class="mb-0 dashboard-subtitle">Browse your boards below.</p>
         </div>
     </div>
 
@@ -17,7 +17,7 @@
                     <h5 class="card-title mb-2">{{ board.title }}</h5>
                     <p class="card-text text-muted flex-grow-1">{{ board.excerpt }}</p>
                     <div class="mt-3 pt-3 border-top small text-body-secondary">
-                        <a href="#" class="btn btn-outline-primary btn-sm mb-2">View Board</a>
+                        <a href="#" class="btn btn-sm mb-2">View Board</a>
 
                         <p class="mb-1"><strong>Owner:</strong> {{ board.owner }}</p>
                         <p class="mb-0"><strong>Created:</strong> {{ board.created_on }}</p>
@@ -32,10 +32,16 @@
         {% endfor %}
     </div>
 
-    {% if is_paginated and page_obj.has_next %}
-    <div class="d-flex justify-content-center mt-4">
-        <a class="btn btn-primary" href="?page={{ page_obj.next_page_number }}">Next</a>
+    {% if is_paginated %}
+    <div class="d-flex justify-content-center gap-2 mt-4">
+        {% if page_obj.has_previous %}
+        <a class="btn btn-outline-secondary" href="?page={{ page_obj.previous_page_number }}">Back</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <a class="btn btn-outline-secondary" href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
     </div>
+
     {% endif %}
 </div>
 {% endblock content %}
