@@ -17,7 +17,7 @@
                     <h5 class="card-title mb-2">{{ board.title }}</h5>
                     <p class="card-text text-muted flex-grow-1">{{ board.excerpt }}</p>
                     <div class="mt-3 pt-3 border-top small text-body-secondary">
-                        <a href="#" class="btn btn-sm mb-2">View Board</a>
+                        <a href="{% url 'tasks' board.slug %}" class="btn btn-sm mb-2">View Board</a>
 
                         <p class="mb-1"><strong>Owner:</strong> {{ board.owner }}</p>
                         <p class="mb-0"><strong>Created:</strong> {{ board.created_on }}</p>
