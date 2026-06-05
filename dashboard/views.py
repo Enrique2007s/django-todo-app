@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .models import Board, Task
+from .forms import TaskForm
 
 
 # Create your views here.
@@ -18,4 +19,15 @@ def tasks(request, slug):
     queryset = Board.objects.filter(owner=request.user)
     board = get_object_or_404(queryset, slug=slug)
     tasks = Task.objects.filter(board=board)
-    return render(request, 'dashboard/tasks.html', {'board': board, 'tasks': tasks},)
+    form = TaskForm()
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.board = board
+            task.owner = request.user
+            task.save()
+        return redirect('tasks', slug=slug)
+
+
+    return render(request, 'dashboard/tasks.html', {'board': board, 'tasks': tasks, 'form': form},)
