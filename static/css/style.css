@@ -16,8 +16,16 @@ main {
     color: #ECF0F1;
 }
 
+.task-title {
+    color: #ECF0F1;
+}
+
 .dashboard-subtitle {
     color: #BDC3C7;
+}
+
+.task-subtitle {
+    color: #BDC3C7 !important;
 }
 
 .btn {
