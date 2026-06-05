@@ -20,6 +20,12 @@ main {
     color: #ECF0F1;
 }
 
+.task-item .task-completed {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    color: #BDC3C7;
+}
+
 .dashboard-subtitle {
     color: #BDC3C7;
 }
