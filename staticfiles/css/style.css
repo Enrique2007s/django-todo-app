@@ -12,11 +12,7 @@ main {
     background-color: #7F8C8D;
 }
 
-.dashboard-title {
-    color: #ECF0F1;
-}
-
-.task-title {
+.dashboard-title .task-title {
     color: #ECF0F1;
 }
 
@@ -37,6 +33,18 @@ main {
     color: #ECF0F1;
     border-color: #ECF0F1;
     background-color: transparent;
+}
+
+.edit-task-btn:hover {
+    color: #ffffff !important;
+    border-color: #ECF0F1 !important;
+    background-color: #27ae60 !important;
+}
+
+.delete-task-btn:hover {
+    color: #ffffff !important;
+    border-color: #ECF0F1 !important;
+    background-color: #e74c3c !important;
 }
 
 .next-btn, .back-btn {

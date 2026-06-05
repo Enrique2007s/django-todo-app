@@ -17,18 +17,22 @@
                             {% csrf_token %}
                             {{ form.title }}
                             <input class="btn" type="submit" name="Create Task">
-
                         </form>
-                        {% for task in tasks %}
-                        <p class="mb-2">{{ task.title }}</p>
-                        <a href="{% url 'update-task' task.id %}" class="btn btn-sm">Edit Task</a>
-                        <a href="{% url 'delete-task' task.id %}" class="btn btn-sm">Delete Task</a>
-                        <p class="text-muted small">{{ task.created_on }}</p>
-                        {% endfor %}
+
+                        <div class="mt-4">
+                            {% for task in tasks %}
+                            <div class="task-item mb-3 p-3 border rounded">
+                                <p class="mb-2 task-title-text">{{ task.title }}</p>
+                                <a href="{% url 'update-task' task.id %}" class="btn btn-sm edit-task-btn">Edit Task</a>
+                                <a href="{% url 'delete-task' task.id %}" class="btn btn-sm delete-task-btn">Delete Task</a>
+                                <p class="task-meta small mb-0">{{ task.created_on }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
 
                     <div class="text-center small text-muted">
-                        Created: {{ board.created_on }}
+                        <p>Board Created: {{ board.created_on }}</p>
                     </div>
                 </div>
             </div>
