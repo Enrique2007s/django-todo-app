@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from .models import Board
+from .models import Board, Task
 
 
 # Create your views here.
@@ -17,4 +17,5 @@ class MyDashboardView(generic.ListView):
 def tasks(request, slug):
     queryset = Board.objects.filter(owner=request.user)
     board = get_object_or_404(queryset, slug=slug)
-    return render(request, 'dashboard/tasks.html', {'board': board},)
+    tasks = Task.objects.filter(board=board)
+    return render(request, 'dashboard/tasks.html', {'board': board, 'tasks': tasks},)

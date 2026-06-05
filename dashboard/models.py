@@ -19,6 +19,20 @@ class Board(models.Model):
         return f'Board: {self.title}, owned by {self.owner}'
 
 
+class Task(models.Model):
+    title = models.CharField(max_length=65)
+    is_completed = models.BooleanField(default=False)
+    board = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='tasks')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks')
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return f'Task: {self.title}, in board: {self.board}, owned by {self.owner}'
+
+
 class Comment(models.Model):
     board = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='comments')
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
