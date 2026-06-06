@@ -16,7 +16,7 @@ class Board(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return f'Board: {self.title}, owned by {self.owner}'
+        return f'Board: {self.title}'
 
 
 class Task(models.Model):
