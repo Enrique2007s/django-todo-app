@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% load i18n %}
 {% load account socialaccount %}
 
@@ -14,21 +14,19 @@
                 <div class="card-body p-4">
                     <h3 class="h3 mb-3 text-center">{% trans "Sign In to DoDash" %}</h3>
                     <p class="text-muted mb-4 text-center">{% blocktrans %} Welcome! Please enter your credentials to access your dashboard.{% endblocktrans %}</p>
+                    
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <a class="btn btn-outline-secondary" href="{% url 'account_signup' %}">
+                                {% trans "Don't have an account? Sign Up" %}
+                            </a>
+                            <button type="submit" class="btn">{% trans "Sign In" %}</button>
+                        </div>
+                    </form>
                 </div>
-
-                <form class="login" method="POST" action="{% url 'account_login' %}">
-                    {% csrf_token %}
-                    <div class="mb-3 padding-left">
-                        {{ form.login.label_tag }} {{ form.login }}
-                    </div>
-                    <div class="mb-3 padding-left">
-                      {{ form.password.label_tag }} {{ form.password }}
-                    </div>
-                    <div class="d-flex justify-content-between mb-3 padding-left padding-right">
-                      <a class="btn btn-outline-secondary" href="{% url 'account_signup' %}">{% trans "Don't have an account? Sign Up" %}</a>
-                      <button type="submit" class="btn">{% trans "Sign In" %}</button>
-                    </div>
-                  </form>
             </div>
         </div>
     </div>
