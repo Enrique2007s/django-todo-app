@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .models import Board, Task
@@ -13,6 +14,16 @@ class MyDashboardView(generic.ListView):
 
     def get_queryset(self):
         return Board.objects.filter(owner=self.request.user)
+
+
+def deleteBoard(request, slug):
+    board = get_object_or_404(Board, slug=slug)
+    if request.method == 'POST':
+        board_title = board.title
+        board.delete()
+        messages.success(request, f'Board {board_title} has been deleted.')
+        return redirect('my-dashboard')
+    return render(request, 'dashboard/delete-board.html', {'board': board},)
 
 
 def tasks(request, slug):
