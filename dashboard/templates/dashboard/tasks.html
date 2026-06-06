@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="container py-4">
+    <a href="{% url 'my-dashboard' %}" class="btn btn-sm btn-outline-secondary mb-3">&larr; Back to Dashboard</a>
     <div class="text-center mb-4">
         <h1 class="h3 mb-2 task-title">{{ board.title }}</h1>
         <p class="text-muted mb-0 task-subtitle">{{ board.excerpt }}</p>

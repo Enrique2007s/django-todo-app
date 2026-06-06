@@ -34,6 +34,23 @@ main {
     min-height: 45vh;
 }
 
+/* Position info button in the top-left of the dashboard */
+.dashboard-container {
+    position: relative;
+}
+
+.dashboard-info-btn {
+    position: absolute;
+    top: 0.35rem;
+    left: 0.35rem;
+    z-index: 60;
+    padding: 0.35rem 0.45rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .dashboard-empty-alert {
     background-color: #7F8C8D;
     color: #ECF0F1;
