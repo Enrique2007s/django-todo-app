@@ -29,8 +29,13 @@
             </div>
         </div>
         {% empty %}
-        <div class="col-12">
-            <div class="alert alert-info mb-0">No boards available yet.</div>
+        <div class="col-12 d-flex justify-content-center align-items-center dashboard-empty-state">
+            <div class="alert dashboard-empty-alert text-center mb-0">
+                
+                No boards available yet.
+                <br>
+                Be the first to create one!
+            </div>
         </div>
         {% endfor %}
     </div>
