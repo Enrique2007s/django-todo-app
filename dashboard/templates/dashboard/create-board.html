@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container py-4">
@@ -6,31 +7,26 @@
         <div class="col-12 col-lg-8 col-xl-6">
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
-                    <div class="text-center mb-4">
-                        {% if user.is_authenticated %}
-                        <h2 class="h4 mb-2">Create your Board</h2>
-                        <p class="text-muted mb-0">Give your board a title(necessary) and a short description(optional).</p>
-                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="text-center mb-4">
+                            <h2 class="h4 mb-2">Create your Board</h2>
+                            <p class="text-muted mb-0">Give your board a title (required) and a short description (optional).</p>
+                        </div>
 
-                    
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            Board title: {{ form.title }}
-                        </div>
-                        <div class="mb-3">
-                            Board description: {{ form.excerpt }}
-                        </div>
-                        <div class="d-flex gap-2 justify-content-end">
-                            <a href="{% url 'my-dashboard' %}" class="btn btn-outline-secondary">Cancel</a>
-                            <button type="submit" class="btn">Create Board</button>
-                        </div>
-                    </form>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="d-flex gap-2 justify-content-end">
+                                <a href="{% url 'my-dashboard' %}" class="btn btn-outline-secondary">Cancel</a>
+                                <button type="submit" class="btn">Create Board</button>
+                            </div>
+                        </form>
                     {% else %}
-                    <p class="text-center mb-0"><strong>Log in to create a board.</strong></p>
-                    <div class="d-flex justify-content-center gap-2 mt-3">
-                        <a href="{% url 'account_login' %}" class="btn">Log In</a>
-                        <a href="{% url 'account_signup' %}" class="btn btn-outline-secondary">Sign Up</a>
+                        <p class="text-center mb-0"><strong>Log in to create a board.</strong></p>
+                        <div class="d-flex justify-content-center gap-2 mt-3">
+                            <a href="{% url 'account_login' %}" class="btn">Log In</a>
+                            <a href="{% url 'account_signup' %}" class="btn btn-outline-secondary">Sign Up</a>
+                        </div>
                     {% endif %}
                 </div>
             </div>

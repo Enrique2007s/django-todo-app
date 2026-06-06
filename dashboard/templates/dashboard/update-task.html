@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="container py-4">
     <div class="row justify-content-center">
@@ -11,7 +11,7 @@
                         
                         <form method="POST" action="{% url 'update-task' task.id %}">
                             {% csrf_token %}
-                            {{ form }}
+                            {{ form|crispy }}
                             <input class="btn" type="submit" name="Update Task">
                         </form>
 
