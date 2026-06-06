@@ -14,11 +14,15 @@ class MyDashboardView(generic.ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        return Board.objects.filter(owner=self.request.user)
+        if self.request.user.is_authenticated:
+            return Board.objects.filter(owner=self.request.user)
+        return Board.objects.none()
 
 
 def deleteBoard(request, slug):
-    board = get_object_or_404(Board, slug=slug)
+    board = get_object_or_404(Board, slug=slug, owner=request.user)
+    if not request.user.is_authenticated:
+        return redirect('account_login')
     if request.method == 'POST':
         board_title = board.title
         board.delete()
@@ -29,6 +33,8 @@ def deleteBoard(request, slug):
 
 def createBoard(request):
     form = BoardForm()
+    if request.method == 'POST' and not request.user.is_authenticated:
+        return redirect('account_login')
     if request.method == 'POST':
         form = BoardForm(request.POST)
         if form.is_valid():
@@ -55,6 +61,8 @@ def tasks(request, slug):
     board = get_object_or_404(queryset, slug=slug)
     tasks = Task.objects.filter(board=board)
     form = TaskForm()
+    if request.method == 'POST' and not request.user.is_authenticated:
+        return redirect('account_login')
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
@@ -68,7 +76,9 @@ def tasks(request, slug):
 
 
 def updateTask(request, pk):
-    task = Task.objects.get(id=pk)
+    task = get_object_or_404(Task, id=pk, owner=request.user)
+    if not request.user.is_authenticated:
+        return redirect('account_login')
 
     form = TaskForm(instance=task)
     if request.method == 'POST':
@@ -80,7 +90,9 @@ def updateTask(request, pk):
 
 
 def deleteTask(request, pk):
-    task = Task.objects.get(id=pk)
+    task = get_object_or_404(Task, id=pk, owner=request.user)
+    if not request.user.is_authenticated:
+        return redirect('account_login')
     if request.method == 'POST':
         task.delete()
         return redirect('tasks', slug=task.board.slug)

@@ -14,18 +14,24 @@
                 <div class="card-body p-4">
                     <div class="text-center mb-4">
                         <h2 class="h5 mb-3">Tasks</h2>
+                        {% if user.is_authenticated %}
                         <form method="POST" action="{% url 'tasks' board.slug %}">
                             {% csrf_token %}
                             {{ form.title }}
                             <input class="btn" type="submit" name="Create Task">
                         </form>
+                        {% else %}
+                        <p class="text-muted mb-0">Log in to create and manage tasks.</p>
+                        {% endif %}
 
                         <div class="mt-4">
                             {% for task in tasks %}
                             <div class="task-item mb-3 p-3 border rounded">
                                 <p class="mb-2 task-title-text {% if task.is_completed %}task-completed{% endif %}">{{ task.title }}</p>
+                                {% if user.is_authenticated %}
                                 <a href="{% url 'update-task' task.id %}" class="btn btn-sm edit-task-btn">Edit Task</a>
                                 <a href="{% url 'delete-task' task.id %}" class="btn btn-sm delete-task-btn">Delete Task</a>
+                                {% endif %}
                                 <p class="task-meta small mb-0">{{ task.created_on }}</p>
                             </div>
                             {% endfor %}

@@ -7,10 +7,12 @@
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
                     <div class="text-center mb-4">
+                        {% if user.is_authenticated %}
                         <h2 class="h4 mb-2">Create your Board</h2>
                         <p class="text-muted mb-0">Give your board a title(necessary) and a short description(optional).</p>
                     </div>
 
+                    
                     <form method="POST">
                         {% csrf_token %}
                         <div class="mb-3">
@@ -24,6 +26,12 @@
                             <button type="submit" class="btn">Create Board</button>
                         </div>
                     </form>
+                    {% else %}
+                    <p class="text-center mb-0"><strong>Log in to create a board.</strong></p>
+                    <div class="d-flex justify-content-center gap-2 mt-3">
+                        <a href="{% url 'account_login' %}" class="btn">Log In</a>
+                        <a href="{% url 'account_signup' %}" class="btn btn-outline-secondary">Sign Up</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

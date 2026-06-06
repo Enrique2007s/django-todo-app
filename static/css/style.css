@@ -97,3 +97,11 @@ main {
     color: #BDC3C7;
     border-color: #BDC3C7;
 }
+
+.padding-left {
+    padding-left: 0.7rem;
+}
+
+.padding-right {
+    padding-right: 0.7rem;
+}

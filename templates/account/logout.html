@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock head_title %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6 col-xl-5">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4 text-center">
+                    <h3 class="h3 mb-3">{% trans "Are you sure you want to sign out?" %}</h3>
+                    <p class="text-muted mb-4">{% trans "If you are sure, click the button below to sign out." %}</p>
+                    <form method="POST" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn" href="{% url 'account_login' %}">{% trans "Sign Out" %}</button>
+                    </form>
+                    <br>
+                    <a href="{% url 'account_login' %}" class="btn">{% trans "Go back" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

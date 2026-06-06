@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock head_title %}
+
+{% block content %}
+<h1 class="h1 mb-3 dashboard-title">{% trans "Create an account" %}</h1>
+
+<p class="dashboard-subtitle">{% blocktrans %}Already have an account? <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+<form class="signup card-body p-4 card" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="btn " type="submit">{% trans "Sign Up" %} &raquo;</button>
+</form>
+
+{% endblock content %}
