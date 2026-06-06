@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Board, Comment, Task
+from .models import Board, Task
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -19,8 +19,4 @@ class TaskAdmin(SummernoteModelAdmin):
     list_filter = ('is_completed', 'created_on', 'owner')
 
 
-@admin.register(Comment)
-class CommentAdmin(SummernoteModelAdmin):
-    list_display = ('owner', 'board', 'created_on')
-    search_fields = ('owner__username', 'board__title', 'created_on')
-    list_filter = ('created_on', 'owner')
+# Comment model admin moved to the `about` app to avoid cross-app imports.

@@ -31,16 +31,3 @@ class Task(models.Model):
 
     def __str__(self):
         return f'Task: {self.title}, in board: {self.board}, owned by {self.owner}'
-
-
-class Comment(models.Model):
-    board = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='comments')
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-    content = models.TextField(max_length=100)
-    created_on = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        ordering = ['-created_on']
-
-    def __str__(self):
-        return f'Comment by {self.owner} on {self.board}'
