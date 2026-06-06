@@ -7,6 +7,9 @@
             <h1 class="h3 mb-1 dashboard-title">Dashboard</h1>
             <p class="mb-0 dashboard-subtitle">Browse your boards below.</p>
         </div>
+        <div>
+            <a href="{% url 'create-board' %}" class="btn btn-primary">Create Board</a>
+        </div>
     </div>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -31,10 +34,11 @@
         {% empty %}
         <div class="col-12 d-flex justify-content-center align-items-center dashboard-empty-state">
             <div class="alert dashboard-empty-alert text-center mb-0">
-                
                 No boards available yet.
                 <br>
-                Be the first to create one!
+                Click below to create one and get started!
+                <br>
+                <a href="{% url 'create-board' %}" class="btn btn-sm mt-3">Create Board</a>
             </div>
         </div>
         {% endfor %}

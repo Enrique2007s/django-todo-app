@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 col-xl-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <h2 class="h4 mb-2">Create your Board</h2>
+                        <p class="text-muted mb-0">Give your board a title(necessary) and a short description(optional).</p>
+                    </div>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            Board title: {{ form.title }}
+                        </div>
+                        <div class="mb-3">
+                            Board description: {{ form.excerpt }}
+                        </div>
+                        <div class="d-flex gap-2 justify-content-end">
+                            <a href="{% url 'my-dashboard' %}" class="btn btn-outline-secondary">Cancel</a>
+                            <button type="submit" class="btn">Create Board</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
