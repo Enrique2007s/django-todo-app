@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django import forms
 from .models import Comment
 from .forms import CommentForm
 
@@ -33,10 +32,13 @@ def about(request):
     }
     return render(request, 'about/about.html', context)
 
+
+# Edit comment view
 @login_required
 def edit_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id, owner=request.user)
 
+    # Check if the logged in user is the owner of the comment
     if request.method == 'POST':
         form = CommentForm(request.POST, instance=comment)
         if form.is_valid():
@@ -47,3 +49,16 @@ def edit_comment(request, comment_id):
         form = CommentForm(instance=comment)
 
     return render(request, 'about/edit-comment.html', {'form': form})
+
+
+# Delete comment view
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, owner=request.user)
+
+    if request.method == 'POST':
+        comment.delete()
+        messages.success(request, 'Your comment has been deleted!')
+        return redirect('about')
+
+    return render(request, 'about/delete-comment.html', {'comment': comment})

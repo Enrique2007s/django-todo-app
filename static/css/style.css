@@ -85,13 +85,13 @@ main {
     background-color: transparent;
 }
 
-.edit-task-btn:hover {
+.edit-task-btn:hover, .edit-comment-btn:hover {
     color: #ffffff !important;
     border-color: #ECF0F1 !important;
     background-color: #27ae60 !important;
 }
 
-.delete-task-btn:hover {
+.delete-task-btn:hover, .delete-comment-btn:hover {
     color: #ffffff !important;
     border-color: #ECF0F1 !important;
     background-color: #e74c3c !important;

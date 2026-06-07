@@ -79,7 +79,8 @@
                         <p class="mb-0 text-start">{{ comment.content|linebreaksbr }}</p>
 						{% if user.is_authenticated and comment.owner == user %}
 							<div class="mt-2">
-								<a href="{% url 'edit-comment' comment.id %}" class="btn btn-sm">Edit</a>
+								<a href="{% url 'edit-comment' comment.id %}" class="btn btn-sm edit-comment-btn">Edit</a>
+								<a href="{% url 'delete-comment' comment.id %}" class="btn btn-sm delete-comment-btn">Delete</a>
 							</div>
 						{% endif %}
                     </div>
