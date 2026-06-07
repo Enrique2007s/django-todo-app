@@ -1,3 +1,4 @@
+/* Base Colors and Backgrounds */
 body {
     background-color: #ffffff;
 }
@@ -6,52 +7,37 @@ main {
     background-color: #2c3e50;
 }
 
-#div_id_is_completed {
-    text-align: left !important;
-}
-
-.card {
-    border-radius: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    background-color: #7F8C8D;
-}
-
+/* Typography / Text Colors */
 .dashboard-title {
     color: #ECF0F1;
-}
-
-.task-title {
-    color: #ECF0F1;
-}
-
-.task-item .task-completed {
-    text-decoration: line-through;
-    text-decoration-thickness: 2px;
-    color: #BDC3C7;
 }
 
 .dashboard-subtitle {
     color: #BDC3C7;
 }
 
-.dashboard-empty-state {
-    min-height: 45vh;
+.task-title {
+    color: #ECF0F1;
 }
 
+.task-subtitle {
+    color: #BDC3C7 !important;
+}
+
+/* Task Item States */
+.task-item .task-completed {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    color: #BDC3C7;
+}
+
+/* Layout & Structure */
 .dashboard-container {
     position: relative;
 }
 
-.dashboard-info-btn {
-    position: absolute;
-    top: 0.35rem;
-    left: 0.35rem;
-    z-index: 60;
-    padding: 0.35rem 0.45rem;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.dashboard-empty-state {
+    min-height: 45vh;
 }
 
 .dashboard-empty-alert {
@@ -70,10 +56,14 @@ main {
     transform: translate(-50%, -50%);
 }
 
-.task-subtitle {
-    color: #BDC3C7 !important;
+/* Cards */
+.card {
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #7F8C8D;
 }
 
+/* Buttons - Base */
 .btn {
     color: #BDC3C7;
     border-color: #BDC3C7;
@@ -84,8 +74,28 @@ main {
     border-color: #ECF0F1;
 }
 
+/* Buttons - Create / Submit / Cancel */
 .create-board-btn-background {
     background-color: #3a614f !important;
+}
+
+.cancel-button-background, .submit-button-background {
+    background-color: #3a614f !important;
+}
+
+.cancel-button:hover, .submit-button:hover {
+    color: #ffffff !important;
+    border-color: #ECF0F1 !important;
+}
+
+button[type="submit"] {
+    background-color: #3a614f;
+    color: white;
+}
+
+/* Buttons - Edit */
+.edit-task-btn-background, .edit-comment-btn-background, .view-board-btn-background {
+    background-color: #184bd4;
 }
 
 .edit-task-btn:hover, .edit-comment-btn:hover, .view-board-btn:hover {
@@ -94,8 +104,9 @@ main {
     background-color: #184bd4 !important;
 }
 
-.edit-task-btn-background, .edit-comment-btn-background, .view-board-btn-background, .create-board-btn-background {
-    background-color: #184bd4;
+/* Buttons - Delete */
+.delete-task-btn-background, .delete-comment-btn-background, .delete-board-btn-background {
+    background-color: #c81619;
 }
 
 .delete-task-btn:hover, .delete-comment-btn:hover, .delete-board-btn:hover {
@@ -104,41 +115,81 @@ main {
     background-color: #8d1416 !important;
 }
 
-.delete-task-btn-background, .delete-comment-btn-background, .delete-board-btn-background {
+/* Buttons - Sign Out */
+.sign-out-button {
     background-color: #c81619;
+    color: #ECF0F1;
+    border-color: #c81619;
 }
 
-.cancel-button:hover, .submit-button:hover {
-    color: #ffffff !important;
-    border-color: #ECF0F1 !important;
+.sign-out-button:hover {
+    background-color: #8d1416;
+    color: #ECF0F1;
+    border-color: #8d1416;
 }
 
-.cancel-button-background, .submit-button-background {
-    background-color: #3a614f !important;
+/* Buttons - Log In */
+.log-in-button {
+    background-color: #3a614f;
+    color: #ECF0F1;
+    border-color: #3a614f;
 }
 
+.log-in-button:hover {
+    background-color: #3a614f;
+    color: #ECF0F1;
+    border-color: #3a614f;
+}
+
+/* Buttons - Navigation (Next/Back) */
 .next-btn, .back-btn {
+    background-color: #3a614f !important;
     color: #BDC3C7;
     border-color: #BDC3C7;
 }
 
-.padding-left {
-    padding-left: 0.7rem;
+/* Buttons - Outline Secondary */
+.btn-outline-secondary {
+    color: #BDC3C7;
+    border-color: #184bd4 !important;
+    background-color: #184bd4 !important;
 }
 
-.padding-right {
-    padding-right: 0.7rem;
+.btn-outline-secondary:hover {
+    color: #ECF0F1;
+    border-color: #184bd4 !important;
+    background-color: #184bd4 !important;
 }
 
+/* Buttons - Info */
+.dashboard-info-btn {
+    position: absolute;
+    top: 0.35rem;
+    left: 0.35rem;
+    z-index: 60;
+    padding: 0.35rem 0.45rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modals */
 .modal-bg-color {
     background-color: #2c3e50;
 }
 
-.next-btn, .back-btn {
-    background-color: #3a614f !important;
+/* Form Elements */
+#div_id_is_completed {
+    text-align: left !important;
 }
 
-.FAQ-background{
+#transparent-background {
+    background-color: transparent !important;
+}
+
+/* FAQ Component */
+.FAQ-background {
     background-color: #7F8C8D;
     color: #ECF0F1;
     border: 1px solid rgba(236, 240, 241, 0.2);
@@ -150,4 +201,26 @@ main {
 
 .FAQ-background:hover {
     background-color: #7F8C8D;
+}
+
+/* Utility Classes */
+.padding-left {
+    padding-left: 0.7rem;
+}
+
+.padding-right {
+    padding-right: 0.7rem;
+}
+
+/* Login Link Override */
+a[href="/accounts/login/"] {
+    background-color: #184bd4 !important;
+    color: #ffffff !important;
+    border-color: #184bd4 !important;
+}
+
+a[href="/accounts/login/"]:hover {
+    background-color: #0f3aa3 !important;
+    color: #ffffff !important;
+    border-color: #0f3aa3 !important;
 }
