@@ -31,6 +31,13 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="text-center mt-4">
+    			<button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#faqModal">
+        			<i class="bi bi-question-circle"></i> Frequently Asked Questions
+    			</button>
+			</div>
+
 				<!-- Comments Section -->
 <div class="card shadow-sm border-0 mt-4">
     <div class="card-body p-4">
@@ -95,4 +102,60 @@
 </div>
 		</div>
 	</div>
+
+
+<!-- FAQ Modal -->
+ <div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="faqModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header modal-bg-color text-white">
+                <h3 class="modal-title fs-4" id="faqModalLabel">
+                    <i class="bi bi-question-circle"></i> Frequently Asked Questions
+                </h3>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="faqAccordion">
+                    <!-- FAQ 1 -->
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                What is DoDash and how does it work?
+                            </button>
+                        </h4>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                DoDash is a productivity tool that helps you organize boards and tasks in one place. You can create multiple boards, add tasks to them, set deadlines, and track your progress. It's designed to be simple yet powerful for both personal and professional use.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 2 -->
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Is DoDash free to use?
+                            </button>
+                        </h4>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes! DoDash is completely free to use. There are no hidden fees or premium tiers. All features are available to all users.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 3 -->
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Can I access DoDash on mobile devices?
+                            </button>
+                        </h4>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Absolutely! DoDash is fully responsive and works on all devices including smartphones, tablets, and desktop computers. You can manage your tasks anywhere, anytime.
+                            </div>
+                        </div>
+                    </div>
+                    
 {% endblock content %}

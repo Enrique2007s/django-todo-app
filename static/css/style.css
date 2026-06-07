@@ -109,3 +109,7 @@ main {
 .padding-right {
     padding-right: 0.7rem;
 }
+
+.modal-bg-color {
+    background-color: #2c3e50;
+};
