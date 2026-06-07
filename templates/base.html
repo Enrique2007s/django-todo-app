@@ -27,6 +27,7 @@
     </head>
 
 <body class="d-flex flex-column h-100">
+    <a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Main navigation">
         <div class="container-fluid">
@@ -61,13 +62,13 @@
     </nav>
 
     <!-- Main content -->
-    <main class="flex-grow-1" role="main">
+    <main id="main-content" class="flex-grow-1" role="main" tabindex="-1">
         <h1 class="visually-hidden">DoDash Task Management Dashboard</h1>
         <div class="container py-4">
             {% if messages %}
-            <div class="position-relative mb-3" role="region" aria-label="Notification Messages" aria-live="polite">
+            <div class="position-relative mb-3" role="status" aria-live="polite" aria-atomic="true" aria-label="Notification messages">
                 {% for message in messages %}
-                <div class="alert alert-success alert-dismissible fade show small mb-2" role="alert">
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags|default:'success' }}{% endif %} alert-dismissible fade show small mb-2" role="alert">
                     {{ message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>

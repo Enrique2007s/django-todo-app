@@ -12,10 +12,10 @@
         <div class="col-12 col-lg-6 col-xl-5">
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
-                    <h3 class="h3 mb-3 text-center">{% trans "Sign In to DoDash" %}</h3>
-                    <p class="text-muted mb-4 text-center">{% blocktrans %} Welcome! Please enter your credentials to access your dashboard.{% endblocktrans %}</p>
+                    <h1 id="loginHeading" class="h3 mb-3 text-center">{% trans "Sign In to DoDash" %}</h1>
+                    <p id="loginIntro" class="text-muted mb-4 text-center">{% blocktrans %} Welcome! Please enter your credentials to access your dashboard.{% endblocktrans %}</p>
                     
-                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                    <form class="login" method="POST" action="{% url 'account_login' %}" aria-labelledby="loginHeading" aria-describedby="loginIntro">
                         {% csrf_token %}
                         {{ form|crispy }}
                         
