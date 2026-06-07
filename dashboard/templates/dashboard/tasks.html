@@ -20,10 +20,13 @@
                         <!-- Tasks -->
                         <h2 id="tasksHeading" class="h5 mb-3">Tasks</h2>
                         {% if user.is_authenticated %}
-                        <!-- Form posts to `tasks`. Title limit: 65 chars. -->
+                        <!-- Form posts to `tasks`. Title limit: 200 chars. -->
                         <form method="POST" action="{% url 'tasks' board.slug %}" aria-labelledby="tasksHeading" aria-describedby="boardTitle boardDescription">
                             {% csrf_token %}
                             {{ form.title|as_crispy_field }}
+                            <p id="taskCharCounter" class="small text-muted text-end mb-2" aria-live="polite">
+                                0 / 200 characters used
+                            </p>
                             <button type="submit" class="btn btn-sm submit-button submit-button-background" aria-label="Create task for {{ board.title }}">Create Task</button>
                         </form>
                         {% else %}
@@ -56,4 +59,22 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const taskTitleInput = document.querySelector('input[name="title"]');
+        const taskCharCounter = document.getElementById('taskCharCounter');
+
+        if (!taskTitleInput || !taskCharCounter) {
+            return;
+        }
+
+        const updateTaskCharCounter = function () {
+            const currentCount = taskTitleInput.value.length;
+            taskCharCounter.textContent = currentCount + ' / 200 characters used';
+        };
+
+        updateTaskCharCounter();
+        taskTitleInput.addEventListener('input', updateTaskCharCounter);
+    });
+</script>
 {% endblock content %}
