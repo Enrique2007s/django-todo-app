@@ -10,7 +10,7 @@ class TestCommentViews(TestCase):
     def setUp(self):
 
         """Set up a test user and a comment for testing the about page views."""
-        
+
         self.user = User.objects.create_superuser(
             username="weird-tester",
             password="password123",
