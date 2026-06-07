@@ -7,14 +7,14 @@
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
                     <div class="text-center mb-4">
-                        <h2>Delete Task</h2>
+                        <h1 id="deleteTaskHeading" class="h2">Delete Task</h1>
 
-                        <p>Are you sure you want to delete the task "{{ task.title }}"?</p>
+                        <p id="deleteTaskDescription">Are you sure you want to delete the task "{{ task.title }}"?</p>
 
-                        <form method="POST" action="{% url 'delete-task' task.id %}">
+                        <form method="POST" action="{% url 'delete-task' task.id %}" aria-labelledby="deleteTaskHeading" aria-describedby="deleteTaskDescription">
                             {% csrf_token %}
-                            <a href="{% url 'tasks' task.board.slug %}" class="btn btn-secondary">Cancel</a>
-                            <input class="btn btn-danger" type="submit" name="Delete Task" value="Delete Task">
+                            <a href="{% url 'tasks' task.board.slug %}" class="btn btn-secondary" aria-label="Cancel and return to the task list">Cancel</a>
+                            <button type="submit" class="btn btn-danger" aria-label="Delete task {{ task.title }}">Delete Task</button>
                         </form>
 
                     </div>

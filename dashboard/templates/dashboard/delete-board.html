@@ -7,14 +7,14 @@
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
                     <div class="text-center mb-4">
-                        <h2>Delete Board</h2>
+                        <h1 id="deleteBoardHeading" class="h2">Delete Board</h1>
 
-                        <p>Are you sure you want to delete the board "{{ board.title }}"?</p>
+                        <p id="deleteBoardDescription">Are you sure you want to delete the board "{{ board.title }}"?</p>
 
-                        <form method="POST" action="{% url 'delete-board' board.slug %}">
+                        <form method="POST" action="{% url 'delete-board' board.slug %}" aria-labelledby="deleteBoardHeading" aria-describedby="deleteBoardDescription">
                             {% csrf_token %}
                             <a href="{% url 'my-dashboard' %}" class="btn cancel-button cancel-button-background">Cancel</a>
-                            <input class="btn delete-board-btn delete-board-btn-background" type="submit" name="Delete Board" value="Delete Board">
+                            <button type="submit" class="btn delete-board-btn delete-board-btn-background" aria-label="Delete board {{ board.title }}">Delete Board</button>
                         </form>
 
                     </div>
