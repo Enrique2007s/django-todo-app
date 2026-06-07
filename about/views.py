@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django import forms
@@ -8,28 +8,42 @@ from .forms import CommentForm
 
 # About page view
 def about(request):
+    # Get all comments (ordered by newest first from model Meta)
     comments = Comment.objects.all()
-    form = CommentForm()
-    if request.method == 'POST' and not request.user.is_authenticated:
-        return redirect('account_login')
+
+    # Handle comment submission
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            messages.error(request, 'You must be logged in to leave a comment.')
+            return redirect('{ url "account_login" }')
+
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.owner = request.user
             comment.save()
-            messages.success(request, 'Your comment has been added.')
+            messages.success(request, 'Your comment has been posted!')
             return redirect('about')
-    return render(request, 'about/about.html', {'comments': comments, 'form': form})
+    else:
+        form = CommentForm()
 
+    context = {
+        'comments': comments,
+        'form': form,
+    }
+    return render(request, 'about/about.html', context)
 
+@login_required
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, owner=request.user)
 
-# def about(request):
-#     return render(request, 'about/about.html')
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your comment has been updated!')
+            return redirect('about')
+    else:
+        form = CommentForm(instance=comment)
 
-
-# # Simple comment form (keeps model import valid)
-# class CommentForm(forms.ModelForm):
-#     class Meta:
-#         model = Comment
-#         fields = ['content']
+    return render(request, 'about/edit-comment.html', {'form': form})

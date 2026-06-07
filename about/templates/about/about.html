@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container py-5">
@@ -8,7 +7,7 @@
 			<div class="card shadow-sm border-0">
 				<div class="card-body p-4 text-center">
 					<h1 class="h3 mb-3 dashboard-title">About DoDash</h1>
-					<p class="mb-0 text-light-emphasis">
+					<p class="mb-0">
 						DoDash helps you organize boards and tasks in one place.
                         <br>
                         Developed by E.R.S.M. in 2026, DoDash is a simple yet powerful tool designed to boost your productivity and keep you on top of your tasks.
@@ -18,72 +17,81 @@
 					</p>
 				</div>
 			</div>
-			
-			<div class="card shadow-sm border-0 mt-4">
-				<div class="card-body p-4 text-center">
-					<h2 class="h4 mb-3 dashboard-title">Creator of DoDash</h2>
-					<p class="mb-0 text-light-emphasis">
-						Hello there!
-						I'm Enrique, a passionate software developer with a love for creating simple and effective solutions to everyday problems. 
-						With a background in web development and a keen eye for design, I developed DoDash to help people stay organized and
-						productive in their daily lives. When I'm not coding, I enjoy playing chess, kickboxing, cooking, teaching, 
-						and exploring new technologies.
-					</p>
-				</div>
-			</div>
-			
-			<!-- Comments Section -->
-			<div class="card shadow-sm border-0 mt-4">
-				<div class="card-body p-4">
-					<h2 class="h4 mb-3 dashboard-title text-center">Comments & Suggestions:</h2>
-					<p class="mb-4 text-light-emphasis text-center">
-						Please share your suggestions and let us know how to improve our website!
-					</p>
-					
-					<!-- Comment Form -->
-					{% if user.is_authenticated %}
-						<form method="post" class="mb-4">
-							{% csrf_token %}
-							{{ form|crispy }}
-							<div class="mt-2">
-								<button type="submit" class="btn">Post Comment</button>
-							</div>
-						</form>
-					{% else %}
-						<div class="alert alert-info text-center">
-							<a href="{% url 'login' %}">Log in</a> to leave a comment or suggestion.
-						</div>
-					{% endif %}
-					
-					<!-- Display Comments -->
-					<div class="comments-section mt-4">
-						{% if comments %}
-							{% for comment in comments %}
-								<div class="comment mb-3 p-3 border rounded">
-									<div class="d-flex justify-content-between align-items-start">
-										<strong class="text-primary">{{ comment.owner.username }}</strong>
-										<small class="text-muted">{{ comment.created_on|date:"F j, Y, g:i a" }}</small>
-									</div>
-									<p class="mb-0 mt-2">{{ comment.content|linebreaks }}</p>
-									{% if user == comment.owner or user.is_staff %}
-										<div class="mt-2">
-											<a href="{% url 'delete_comment' comment.id %}" class="text-danger small" 
-											   onclick="return confirm('Are you sure you want to delete this comment?')">
-												Delete
-											</a>
-										</div>
-									{% endif %}
-								</div>
-							{% endfor %}
-						{% else %}
-							<div class="text-center text-muted">
-								<p>No comments yet. Be the first to share your thoughts!</p>
-							</div>
-						{% endif %}
+			<div>
+				<div class="card shadow-sm border-0 mt-4">
+					<div class="card-body p-4 text-center">
+						<h2 class="h4 mb-3 dashboard-title">Creator of DoDash</h2>
+						<p class="mb-0">
+							Hello there!
+							I'm Enrique, a passionate software developer with a love for creating simple and effective solutions to everyday problems. 
+							With a background in web development and a keen eye for design, I developed DoDash to help people stay organized and
+							productive in their daily lives. When I'm not coding, I enjoy playing chess, kickboxing, cooking, teaching, 
+							and exploring new technologies.
+						</p>
 					</div>
 				</div>
 			</div>
+				<!-- Comments Section -->
+<div class="card shadow-sm border-0 mt-4">
+    <div class="card-body p-4">
+        <h2 class="h4 mb-3 dashboard-title text-center">Comments:</h2>
+        <p class="mb-4 text-center">
+            Please share your suggestions and let us know how to improve our website!
+        </p>
+        
+        <!-- Display messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        <!-- Comment Form -->
+        {% if user.is_authenticated %}
+            <div class="mb-5">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        {{ form.content }}
+                    </div>
+                    <button type="submit" class="btn">Post Comment</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center mb-4">
+                <p class="mb-0 text-dark fs-5">Login to leave a comment.</p>
+            </div>
+        {% endif %}
+        
+        <!-- Display Comments -->
+        {% if comments %}
+            <div class="mt-4">
+                <h3 class="h5 mb-3">All Comments ({{ comments.count }})</h3>
+                {% for comment in comments %}
+                    <div class="border-bottom pb-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <strong>{{ comment.owner.username }}</strong>
+                            <small class="text-muted">{{ comment.created_on|date:"F j, Y, g:i a" }}</small>
+                        </div>
+                        <p class="mb-0 text-start">{{ comment.content|linebreaksbr }}</p>
+						{% if user.is_authenticated and comment.owner == user %}
+							<div class="mt-2">
+								<a href="{% url 'edit-comment' comment.id %}" class="btn btn-sm">Edit</a>
+							</div>
+						{% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center text-muted mt-4">
+                <p>No comments yet. Be the first to share your thoughts!</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
 		</div>
 	</div>
-</div>
 {% endblock content %}
