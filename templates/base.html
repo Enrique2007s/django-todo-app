@@ -68,8 +68,8 @@
             {% if messages %}
             <div class="position-relative mb-3" role="status" aria-live="polite" aria-atomic="true" aria-label="Notification messages">
                 {% for message in messages %}
-                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags|default:'success' }}{% endif %} alert-dismissible fade show small mb-2" role="alert">
-                    {{ message }}
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags|default:'success' }}{% endif %} alert-dismissible fade show small mb-2 w-100" role="alert">
+                    <span class="d-block text-break pe-5">{{ message }}</span>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endfor %}
