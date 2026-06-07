@@ -28,11 +28,13 @@
                         <div class="mt-4" role="list" aria-label="Task list">
                             {% for task in tasks %}
                             <div class="task-item mb-3 p-3 border rounded" role="listitem" aria-labelledby="taskTitle-{{ task.id }}">
-                                {% if user.is_authenticated %}
-                                <a href="{% url 'update-task' task.id %}" class="btn btn-sm edit-task-btn edit-task-btn-background" aria-label="Edit task {{ task.title }}">Edit Task</a>
-                                <a href="{% url 'delete-task' task.id %}" class="btn btn-sm delete-task-btn delete-task-btn-background" aria-label="Delete task {{ task.title }}">Delete Task</a>
-                                {% endif %}
                                 <p id="taskTitle-{{ task.id }}" class="task-title-text {% if task.is_completed %}task-completed{% endif %} mb-2">{{ task.title }}</p>
+                                <div class="d-flex justify-content-center gap-2 mb-2" aria-hidden="false">
+                                    {% if user.is_authenticated %}
+                                    <a href="{% url 'update-task' task.id %}" class="btn btn-sm edit-task-btn edit-task-btn-background" aria-label="Edit task {{ task.title }}">Edit Task</a>
+                                    <a href="{% url 'delete-task' task.id %}" class="btn btn-sm delete-task-btn delete-task-btn-background" aria-label="Delete task {{ task.title }}">Delete Task</a>
+                                    {% endif %}
+                                </div>
                                 <p class="task-meta small mb-0">{{ task.created_on }}</p>
                             </div>
                             {% endfor %}
