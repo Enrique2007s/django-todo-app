@@ -9,7 +9,12 @@
             </button>
             <div>
                 <h1 class="h3 mb-1 dashboard-title"><br>Dashboard</h1>
+                {% if user.is_authenticated %}
                 <p class="mb-0 dashboard-subtitle">Browse your boards below, {{ user.username }}.</p>
+                {% endif %}
+                {% if not user.is_authenticated %}
+                <p class="mb-0 dashboard-subtitle">Log in to view and manage your boards, tasks, and more.</p>
+                {% endif %}
             </div>
         </div>
         {% if object_list and user.is_authenticated %}
