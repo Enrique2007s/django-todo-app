@@ -75,10 +75,12 @@
                 {% endfor %}
             </div>
             {% endif %}
-            {% block content %}
-            {% endblock content %}
         </div>
+        {% block content %}
     </main>
+{% endblock content %}
+        
+    
 
 <footer class="footer mt-auto py-3 bg-dark text-light" role="contentinfo">
     <div class="container">
