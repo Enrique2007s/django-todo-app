@@ -40,70 +40,70 @@
 			</div>
 
 				<!-- Comments Section -->
-<div class="card shadow-sm border-0 mt-4">
-    <div class="card-body p-4">
-        <h2 class="h4 mb-3 dashboard-title text-center">Comments:</h2>
-        <p class="mb-4 text-center">
-            Please share your suggestions and let us know how to improve our website!
-        </p>
+	<div class="card shadow-sm border-0 mt-4">
+    	<div class="card-body p-4">
+    		<h2 class="h4 mb-3 dashboard-title text-center">Comments:</h2>
+    	    <p class="mb-4 text-center">
+				Please share your suggestions and let us know how to improve our website!
+    	    </p>
         
-        <!-- Display messages -->
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
-        {% endif %}
+    	    <!-- Display messages -->
+        	{% if messages %}
+        	    {% for message in messages %}
+        	        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+        	            {{ message }}
+        	            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        	        </div>
+         	   {% endfor %}
+        	{% endif %}
         
-        <!-- Comment Form -->
-        {% if user.is_authenticated %}
-            <div class="mb-5">
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="mb-3">
-						<label for="id_content" class="form-label visually-hidden">Your comment or suggestion</label>
-                        {{ form.content }}
-                    </div>
-                    <button type="submit " class="btn submit-button-background">Post Comment</button>
-                </form>
-            </div>
-        {% else %}
-            <div class="alert alert-info text-center mb-4">
-                <p class="mb-0 text-dark fs-5">Login to leave a comment.</p>
-            </div>
-        {% endif %}
-        
-        <!-- Display Comments -->
-        {% if comments %}
-            <div class="mt-4">
-                <h3 class="h5 mb-3">All Comments ({{ comments.count }})</h3>
-                {% for comment in comments %}
-                    <div class="border-bottom pb-3 mb-3">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <strong>{{ comment.owner.username }}</strong>
-                            <small class="text-muted">{{ comment.created_on|date:"F j, Y, g:i a" }}</small>
-                        </div>
-                        <p class="mb-0 text-start">{{ comment.content|linebreaksbr }}</p>
-						{% if user.is_authenticated and comment.owner == user %}
-							<div class="mt-2">
-								<a href="{% url 'edit-comment' comment.id %}" class="btn btn-sm edit-comment-btn edit-comment-btn-background">Edit</a>
-								<a href="{% url 'delete-comment' comment.id %}" class="btn btn-sm delete-comment-btn delete-comment-btn-background">Delete</a>
-							</div>
-						{% endif %}
-                    </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <div class="text-center text-muted mt-4">
-                <p>No comments yet. Be the first to share your thoughts!</p>
-            </div>
-        {% endif %}
-    </div>
-</div>
-		</div>
+        	<!-- Comment Form -->
+        	{% if user.is_authenticated %}
+        	    <div class="mb-5">
+        	        <form method="post">
+        	            {% csrf_token %}
+        	            <div class="mb-3">
+							<label for="id_content" class="form-label visually-hidden">Your comment or suggestion</label>
+        	                {{ form.content }}
+        	            </div>
+                    	<button type="submit " class="btn submit-button-background">Post Comment</button>
+                	</form>
+            	</div>
+        	{% else %}
+        	    <div class="alert alert-info text-center mb-4">
+        	        <p class="mb-0 text-dark fs-5">Login to leave a comment.</p>
+        	    </div>
+        	{% endif %}
+				
+        	<!-- Display Comments -->
+        	{% if comments %}
+            	<div class="mt-4">
+                	<h3 class="h5 mb-3">All Comments ({{ comments.count }})</h3>
+    	            {% for comment in comments %}
+        	            <div class="border-bottom pb-3 mb-3">
+            	            <div class="d-flex justify-content-between align-items-center mb-2">
+                	            <strong>{{ comment.owner.username }}</strong>
+                    	        <small class="text-muted">{{ comment.created_on|date:"F j, Y, g:i a" }}</small>
+                        	</div>
+	                        <p class="mb-0 text-start">{{ comment.content|linebreaksbr }}</p>
+							{% if user.is_authenticated and comment.owner == user %}
+								<div class="mt-2">
+									<a href="{% url 'edit-comment' comment.id %}" class="btn btn-sm edit-comment-btn edit-comment-btn-background">Edit</a>
+									<a href="{% url 'delete-comment' comment.id %}" class="btn btn-sm delete-comment-btn delete-comment-btn-background">Delete</a>
+								</div>
+							{% endif %}
+        	            </div>
+            	    {% endfor %}
+    	        </div>
+        	{% else %}
+            	<div class="text-center text-muted mt-4">
+                	<p>No comments yet. Be the first to share your thoughts!</p>
+	            </div>
+    	    {% endif %}
+    	</div>
 	</div>
+		</div>
+</div>
 
 
 <!-- FAQ Modal -->
@@ -183,5 +183,6 @@
 			</div>
 		</div>
 	</div>
+</div>
                     
 {% endblock content %}
