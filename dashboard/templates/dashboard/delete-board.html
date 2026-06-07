@@ -13,8 +13,8 @@
 
                         <form method="POST" action="{% url 'delete-board' board.slug %}">
                             {% csrf_token %}
-                            <a href="{% url 'my-dashboard' %}" class="btn btn-secondary">Cancel</a>
-                            <input class="btn btn-danger" type="submit" name="Delete Board" value="Delete Board">
+                            <a href="{% url 'my-dashboard' %}" class="btn">Cancel</a>
+                            <input class="btn delete-board-btn" type="submit" name="Delete Board" value="Delete Board">
                         </form>
 
                     </div>
