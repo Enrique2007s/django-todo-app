@@ -28,9 +28,9 @@
 
 <body class="d-flex flex-column h-100">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Main navigation">
         <div class="container-fluid">
-            <a class="navbar-brand fw-semibold" href="{% url 'my-dashboard' %}">DoDash</a>
+            <a class="navbar-brand fw-semibold" href="{% url 'my-dashboard' %}" aria-label="DoDash, return to dashboard">DoDash</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,21 +38,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'my-dashboard' %}fw-bold{% endif %}" aria-current="page" href="{% url 'my-dashboard' %}">Home</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'my-dashboard' %}fw-bold{% endif %}" {% if request.resolver_match.url_name == 'my-dashboard' %} aria-current="page"{% endif %} href="{% url 'my-dashboard' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}fw-bold{% endif %}" aria-label="About" href="{% url 'about' %}">About</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}fw-bold{% endif %}" {% if request.resolver_match.url_name == 'about' %} aria-current="page"{% endif %} href="{% url 'about' %}">About</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" {% if request.path == logout_url %} aria-current="page"{% endif %} href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
+                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" {% if request.path == signup_url %} aria-current="page"{% endif %} href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a id="transparent-background" class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                        <a id="transparent-background" class="nav-link {% if request.path == login_url %}active{% endif %}" {% if request.path == login_url %} aria-current="page"{% endif %} href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -61,10 +61,10 @@
     </nav>
 
     <!-- Main content -->
-    <main class="flex-grow-1">
+    <main class="flex-grow-1" role="main">
         <div class="container py-4">
             {% if messages %}
-            <div class="position-relative mb-3">
+            <div class="position-relative mb-3" role="region" aria-label="Notification Messages" aria-live="polite">
                 {% for message in messages %}
                 <div class="alert alert-success alert-dismissible fade show small mb-2" role="alert">
                     {{ message }}
@@ -78,7 +78,7 @@
         </div>
     </main>
 
-<footer class="footer mt-auto py-3 bg-dark text-light">
+<footer class="footer mt-auto py-3 bg-dark text-light" role="contentinfo">
     <div class="container">
         <div class="row align-items-center gy-3">
             <div class="col-12 col-md-4 text-center text-md-start">
@@ -92,14 +92,14 @@
             <div class="col-12 col-md-4 text-center text-md-end">
                 <div class="d-inline-flex align-items-center gap-3">
                     <span>Contact with</span>
-                    <a class="text-light" href="https://www.instagram.com/" aria-label="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
+                    <a class="text-light" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                     </a>
-                    <a class="text-light" href="https://twitter.com/" aria-label="Twitter">
-                        <i class="fa-brands fa-twitter"></i>
+                    <a class="text-light" href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <i class="fa-brands fa-twitter" aria-hidden="true"></i>
                     </a>
-                    <a class="text-light" href="https://www.youtube.com/" aria-label="YouTube">
-                        <i class="fa-brands fa-youtube"></i>
+                    <a class="text-light" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <i class="fa-brands fa-youtube" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
