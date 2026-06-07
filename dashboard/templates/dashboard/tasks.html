@@ -3,10 +3,10 @@
 
 {% block content %}
 <div class="container py-4">
-    <a href="{% url 'my-dashboard' %}" class="btn btn-sm mb-3">&larr; Back to Dashboard</a>
+    <a href="{% url 'my-dashboard' %}" class="btn btn-sm mb-3" aria-label="Back to dashboard">&larr; Back to Dashboard</a>
     <div class="text-center mb-4">
-        <h1 class="h3 mb-2 task-title">{{ board.title }}</h1>
-        <p class="text-muted mb-0 task-subtitle">{{ board.excerpt }}</p>
+        <h1 id="boardTitle" class="h3 mb-2 task-title">{{ board.title }}</h1>
+        <p id="boardDescription" class="text-muted mb-0 task-subtitle">{{ board.excerpt }}</p>
     </div>
 
     <div class="row justify-content-center">
@@ -14,25 +14,25 @@
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
                     <div class="text-center mb-4">
-                        <h2 class="h5 mb-3">Tasks</h2>
+                        <h2 id="tasksHeading" class="h5 mb-3">Tasks</h2>
                         {% if user.is_authenticated %}
-                        <form method="POST" action="{% url 'tasks' board.slug %}">
+                        <form method="POST" action="{% url 'tasks' board.slug %}" aria-labelledby="tasksHeading" aria-describedby="boardTitle boardDescription">
                             {% csrf_token %}
                             {{ form.title|as_crispy_field }}
-                            <input class="btn btn-sm submit-button submit-button-background" type="submit" name="Create Task">
+                            <button type="submit" class="btn btn-sm submit-button submit-button-background" aria-label="Create task for {{ board.title }}">Create Task</button>
                         </form>
                         {% else %}
                         <p class="text-muted mb-0">Log in to create and manage tasks.</p>
                         {% endif %}
 
-                        <div class="mt-4">
+                        <div class="mt-4" role="list" aria-label="Task list">
                             {% for task in tasks %}
-                            <div class="task-item mb-3 p-3 border rounded">
-                                <p class="mb-2 task-title-text {% if task.is_completed %}task-completed{% endif %}">{{ task.title }}</p>
+                            <div class="task-item mb-3 p-3 border rounded" role="listitem" aria-labelledby="taskTitle-{{ task.id }}">
                                 {% if user.is_authenticated %}
-                                <a href="{% url 'update-task' task.id %}" class="btn btn-sm edit-task-btn edit-task-btn-background">Edit Task</a>
-                                <a href="{% url 'delete-task' task.id %}" class="btn btn-sm delete-task-btn delete-task-btn-background">Delete Task</a>
+                                <a href="{% url 'update-task' task.id %}" class="btn btn-sm edit-task-btn edit-task-btn-background" aria-label="Edit task {{ task.title }}">Edit Task</a>
+                                <a href="{% url 'delete-task' task.id %}" class="btn btn-sm delete-task-btn delete-task-btn-background" aria-label="Delete task {{ task.title }}">Delete Task</a>
                                 {% endif %}
+                                <p id="taskTitle-{{ task.id }}" class="task-title-text {% if task.is_completed %}task-completed{% endif %} mb-2">{{ task.title }}</p>
                                 <p class="task-meta small mb-0">{{ task.created_on }}</p>
                             </div>
                             {% endfor %}
