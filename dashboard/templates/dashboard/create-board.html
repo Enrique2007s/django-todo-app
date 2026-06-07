@@ -9,11 +9,11 @@
                 <div class="card-body p-4">
                     {% if user.is_authenticated %}
                         <div class="text-center mb-4">
-                            <h2 class="h4 mb-2">Create your Board</h2>
-                            <p class="text-muted mb-0">Give your board a title (required) and a short description (optional).</p>
+                            <h1 id="createBoardHeading" class="h4 mb-2">Create your Board</h1>
+                            <p id="createBoardIntro" class="text-muted mb-0">Give your board a title (required) and a short description (optional).</p>
                         </div>
 
-                        <form method="POST">
+                        <form method="POST" aria-labelledby="createBoardHeading" aria-describedby="createBoardIntro">
                             {% csrf_token %}
                             {{ form|crispy }}
                             <div class="d-flex gap-2 justify-content-end">
