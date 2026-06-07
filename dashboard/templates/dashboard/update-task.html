@@ -12,7 +12,7 @@
                         <form method="POST" action="{% url 'update-task' task.id %}">
                             {% csrf_token %}
                             {{ form|crispy }}
-                            <input class="btn" type="submit" name="Update Task">
+                            <input class="btn submit-button-background" type="submit" name="Update Task">
                         </form>
 
                         {% for task in tasks %}

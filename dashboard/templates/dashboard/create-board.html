@@ -17,8 +17,8 @@
                             {% csrf_token %}
                             {{ form|crispy }}
                             <div class="d-flex gap-2 justify-content-end">
-                                <a href="{% url 'my-dashboard' %}" class="btn btn-outline-secondary">Cancel</a>
-                                <button type="submit" class="btn">Create Board</button>
+                                <a href="{% url 'my-dashboard' %}" class="btn cancel-button cancel-button-background">Cancel</a>
+                                <button type="submit" class="btn btn-sm create-board-btn create-board-btn-background">Create Board</button>
                             </div>
                         </form>
                     {% else %}

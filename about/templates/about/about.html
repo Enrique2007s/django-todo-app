@@ -33,7 +33,7 @@
 			</div>
 
 			<div class="text-center mt-4">
-    			<button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#faqModal">
+    			<button type="button" class="btn btn-lg FAQ-background" data-bs-toggle="modal" data-bs-target="#faqModal">
         			<i class="bi bi-question-circle"></i> Frequently Asked Questions
     			</button>
 			</div>
@@ -64,7 +64,7 @@
                     <div class="mb-3">
                         {{ form.content }}
                     </div>
-                    <button type="submit" class="btn">Post Comment</button>
+                    <button type="submit " class="btn submit-button-background">Post Comment</button>
                 </form>
             </div>
         {% else %}
@@ -86,8 +86,8 @@
                         <p class="mb-0 text-start">{{ comment.content|linebreaksbr }}</p>
 						{% if user.is_authenticated and comment.owner == user %}
 							<div class="mt-2">
-								<a href="{% url 'edit-comment' comment.id %}" class="btn btn-sm edit-comment-btn">Edit</a>
-								<a href="{% url 'delete-comment' comment.id %}" class="btn btn-sm delete-comment-btn">Delete</a>
+								<a href="{% url 'edit-comment' comment.id %}" class="btn btn-sm edit-comment-btn edit-comment-btn-background">Edit</a>
+								<a href="{% url 'delete-comment' comment.id %}" class="btn btn-sm delete-comment-btn delete-comment-btn-background">Delete</a>
 							</div>
 						{% endif %}
                     </div>

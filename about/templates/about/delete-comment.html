@@ -16,10 +16,10 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex gap-2 justify-content-center">
-                    <a href="{% url 'about' %}" class="btn">Cancel</a>
+                    <a href="{% url 'about' %}" class="btn cancel-button-background">Cancel</a>
                     <form method="post" class="mb-0">
                         {% csrf_token %}
-                        <button type="submit" class="btn delete-comment-btn">Yes, Delete</button>
+                        <button type="submit" class="btn delete-comment-btn delete-comment-btn-background">Yes, Delete</button>
                     </form>
                 </div>
             </div>

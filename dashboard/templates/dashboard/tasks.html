@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container py-4">
-    <a href="{% url 'my-dashboard' %}" class="btn btn-sm btn-outline-secondary mb-3">&larr; Back to Dashboard</a>
+    <a href="{% url 'my-dashboard' %}" class="btn btn-sm mb-3">&larr; Back to Dashboard</a>
     <div class="text-center mb-4">
         <h1 class="h3 mb-2 task-title">{{ board.title }}</h1>
         <p class="text-muted mb-0 task-subtitle">{{ board.excerpt }}</p>
@@ -19,7 +19,7 @@
                         <form method="POST" action="{% url 'tasks' board.slug %}">
                             {% csrf_token %}
                             {{ form.title|as_crispy_field }}
-                            <input class="btn" type="submit" name="Create Task">
+                            <input class="btn btn-sm submit-button submit-button-background" type="submit" name="Create Task">
                         </form>
                         {% else %}
                         <p class="text-muted mb-0">Log in to create and manage tasks.</p>
@@ -30,8 +30,8 @@
                             <div class="task-item mb-3 p-3 border rounded">
                                 <p class="mb-2 task-title-text {% if task.is_completed %}task-completed{% endif %}">{{ task.title }}</p>
                                 {% if user.is_authenticated %}
-                                <a href="{% url 'update-task' task.id %}" class="btn btn-sm edit-task-btn">Edit Task</a>
-                                <a href="{% url 'delete-task' task.id %}" class="btn btn-sm delete-task-btn">Delete Task</a>
+                                <a href="{% url 'update-task' task.id %}" class="btn btn-sm edit-task-btn edit-task-btn-background">Edit Task</a>
+                                <a href="{% url 'delete-task' task.id %}" class="btn btn-sm delete-task-btn delete-task-btn-background">Delete Task</a>
                                 {% endif %}
                                 <p class="task-meta small mb-0">{{ task.created_on }}</p>
                             </div>

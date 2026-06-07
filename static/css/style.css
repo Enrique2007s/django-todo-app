@@ -82,19 +82,39 @@ main {
 .btn:hover {
     color: #ECF0F1;
     border-color: #ECF0F1;
-    background-color: transparent;
 }
 
-.edit-task-btn:hover, .edit-comment-btn:hover {
+.create-board-btn-background {
+    background-color: #3a614f !important;
+}
+
+.edit-task-btn:hover, .edit-comment-btn:hover, .view-board-btn:hover {
     color: #ffffff !important;
     border-color: #ECF0F1 !important;
-    background-color: #27ae60 !important;
+    background-color: #184bd4 !important;
+}
+
+.edit-task-btn-background, .edit-comment-btn-background, .view-board-btn-background, .create-board-btn-background {
+    background-color: #184bd4;
 }
 
 .delete-task-btn:hover, .delete-comment-btn:hover, .delete-board-btn:hover {
     color: #ffffff !important;
     border-color: #ECF0F1 !important;
-    background-color: #e74c3c !important;
+    background-color: #8d1416 !important;
+}
+
+.delete-task-btn-background, .delete-comment-btn-background, .delete-board-btn-background {
+    background-color: #c81619;
+}
+
+.cancel-button:hover, .submit-button:hover {
+    color: #ffffff !important;
+    border-color: #ECF0F1 !important;
+}
+
+.cancel-button-background, .submit-button-background {
+    background-color: #3a614f !important;
 }
 
 .next-btn, .back-btn {
@@ -112,4 +132,79 @@ main {
 
 .modal-bg-color {
     background-color: #2c3e50;
-};
+}
+
+.next-btn, .back-btn {
+    background-color: #3a614f !important;
+}
+
+.FAQ-background{
+    background-color: #7F8C8D;
+    color: #ECF0F1;
+    border: 1px solid rgba(236, 240, 241, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    max-width: 28rem;
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.12);
+}
+
+.FAQ-background:hover {
+    background-color: #7F8C8D;
+}
+
+.sign-out-button {
+    background-color: #c81619;
+    color: #ECF0F1;
+    border-color: #c81619;
+}
+
+.sign-out-button:hover {
+    background-color: #8d1416;
+    color: #ECF0F1;
+    border-color: #8d1416;
+}
+
+.log-in-button {
+    background-color: #3a614f;
+    color: #ECF0F1;
+    border-color: #3a614f;
+}
+
+.log-in-button:hover {
+    background-color: #3a614f;
+    color: #ECF0F1;
+    border-color: #3a614f;
+}
+
+.btn-outline-secondary {
+    color: #BDC3C7;
+    border-color: #184bd4!important;
+    background-color: #184bd4!important;
+}
+
+.btn-outline-secondary:hover {
+    color: #ECF0F1;
+    border-color: #184bd4!important;
+    background-color: #184bd4!important;
+}
+
+a[href="/accounts/login/"] {
+    background-color: #184bd4 !important;
+    color: #ffffff !important;
+    border-color: #184bd4 !important;
+}
+
+a[href="/accounts/login/"]:hover {
+    background-color: #0f3aa3 !important;
+    color: #ffffff !important;
+    border-color: #0f3aa3 !important;
+}
+
+#transparent-background {
+    background-color: transparent !important;
+}
+
+button[type="submit"] {
+    background-color: #3a614f;
+    color: white;
+}
