@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container py-5">
@@ -17,12 +18,69 @@
 					</p>
 				</div>
 			</div>
+			
 			<div class="card shadow-sm border-0 mt-4">
 				<div class="card-body p-4 text-center">
-					<h2 class="h4 mb-3 dashboard-title">Comments:</h2>
+					<h2 class="h4 mb-3 dashboard-title">Creator of DoDash</h2>
 					<p class="mb-0 text-light-emphasis">
+						Hello there!
+						I'm Enrique, a passionate software developer with a love for creating simple and effective solutions to everyday problems. 
+						With a background in web development and a keen eye for design, I developed DoDash to help people stay organized and
+						productive in their daily lives. When I'm not coding, I enjoy playing chess, kickboxing, cooking, teaching, 
+						and exploring new technologies.
+					</p>
+				</div>
+			</div>
+			
+			<!-- Comments Section -->
+			<div class="card shadow-sm border-0 mt-4">
+				<div class="card-body p-4">
+					<h2 class="h4 mb-3 dashboard-title text-center">Comments & Suggestions:</h2>
+					<p class="mb-4 text-light-emphasis text-center">
 						Please share your suggestions and let us know how to improve our website!
 					</p>
+					
+					<!-- Comment Form -->
+					{% if user.is_authenticated %}
+						<form method="post" class="mb-4">
+							{% csrf_token %}
+							{{ form|crispy }}
+							<div class="mt-2">
+								<button type="submit" class="btn">Post Comment</button>
+							</div>
+						</form>
+					{% else %}
+						<div class="alert alert-info text-center">
+							<a href="{% url 'login' %}">Log in</a> to leave a comment or suggestion.
+						</div>
+					{% endif %}
+					
+					<!-- Display Comments -->
+					<div class="comments-section mt-4">
+						{% if comments %}
+							{% for comment in comments %}
+								<div class="comment mb-3 p-3 border rounded">
+									<div class="d-flex justify-content-between align-items-start">
+										<strong class="text-primary">{{ comment.owner.username }}</strong>
+										<small class="text-muted">{{ comment.created_on|date:"F j, Y, g:i a" }}</small>
+									</div>
+									<p class="mb-0 mt-2">{{ comment.content|linebreaks }}</p>
+									{% if user == comment.owner or user.is_staff %}
+										<div class="mt-2">
+											<a href="{% url 'delete_comment' comment.id %}" class="text-danger small" 
+											   onclick="return confirm('Are you sure you want to delete this comment?')">
+												Delete
+											</a>
+										</div>
+									{% endif %}
+								</div>
+							{% endfor %}
+						{% else %}
+							<div class="text-center text-muted">
+								<p>No comments yet. Be the first to share your thoughts!</p>
+							</div>
+						{% endif %}
+					</div>
 				</div>
 			</div>
 		</div>

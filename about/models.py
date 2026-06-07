@@ -12,4 +12,4 @@ class Comment(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return f'Comment by {self.owner} on {self.board}'
+        return f'Comment by {self.owner} on about page'
