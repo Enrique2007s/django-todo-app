@@ -70,10 +70,17 @@ def tasks(request, slug):
             task.board = board
             task.owner = request.user
             task.save()
-            messages.success(request, f'Task "{task.title}" has been added to board.')
-        return redirect('tasks', slug=slug)
+            messages.success(
+                request,
+                f'Task "{task.title}" has been added to board.'
+            )
+            return redirect('tasks', slug=slug)
 
-    return render(request, 'dashboard/tasks.html', {'board': board, 'tasks': tasks, 'form': form},)
+    return render(
+        request,
+        'dashboard/tasks.html',
+        {'board': board, 'tasks': tasks, 'form': form},
+    )
 
 
 def updateTask(request, pk):
@@ -88,7 +95,11 @@ def updateTask(request, pk):
             form.save()
             messages.success(request, f'Task "{task.title}" has been updated.')
             return redirect('tasks', slug=task.board.slug)
-    return render(request, 'dashboard/update-task.html', {'form': form, 'task': task},)
+    return render(
+        request,
+        'dashboard/update-task.html',
+        {'form': form, 'task': task},
+    )
 
 
 def deleteTask(request, pk):
