@@ -8,14 +8,15 @@
                 <div class="card-body p-4">
                     <h2 class="h4 mb-3 dashboard-title text-center">Edit Your Comment</h2>
                     
-                    <form method="post">
+                    <form method="post" aria-labelledby="editCommentHeading">
                         {% csrf_token %}
                         <div class="mb-3">
+                            <label for="id_content" class="form-label visually-hidden">Edit your comment</label>
                             {{ form.content }}
                         </div>
                         <div class="d-flex gap-2 justify-content-center">
-                            <a href="{% url 'about' %}" class="btn cancel-button-background">Cancel</a>
-                            <button type="submit" class="btn edit-comment-btn edit-comment-btn-background">Edit Comment</button>
+                            <a href="{% url 'about' %}" class="btn cancel-button-background" aria-label="Cancel editing and return to About page">Cancel</a>
+                            <button type="submit" class="btn edit-comment-btn edit-comment-btn-background" aria-label="Submit edited comment">Edit Comment</button>
                         </div>
                     </form>
                 </div>
