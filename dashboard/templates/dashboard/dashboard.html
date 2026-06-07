@@ -9,7 +9,7 @@
             </button>
             <div>
                 <h1 class="h3 mb-1 dashboard-title"><br>Dashboard</h1>
-                <p class="mb-0 dashboard-subtitle">Browse your boards below.</p>
+                <p class="mb-0 dashboard-subtitle">Browse your boards below, {{ user.username }}.</p>
             </div>
         </div>
         {% if object_list and user.is_authenticated %}
