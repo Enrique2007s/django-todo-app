@@ -1,23 +1,30 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+<!-- Update task page: short, focused comments below -->
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-12 col-lg-8 col-xl-6">
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
                     <div class="text-center mb-4">
+                        <!-- Heading -->
                         <h1 id="editTaskHeading" class="h5 mb-3">Edit Task</h1>
-                        
+
+                        <!-- Edit form (aria labelled) -->
                         <form method="POST" action="{% url 'update-task' task.id %}" aria-labelledby="editTaskHeading">
                             {% csrf_token %}
                             {{ form|crispy }}
                             <input class="btn submit-button-background" type="submit" name="Update Task" aria-label="Update task {{ task.title }}">
                         </form>
 
+                        <!-- Other user tasks: quick links -->
                         {% for task in tasks %}
+                        <!-- Task title -->
                         <p class="mb-2">{{ task.title }}</p>
+                        <!-- Edit link (same view) -->
                         <a href="{% url 'update-task' task.id %}" class="btn btn-sm" aria-label="Edit task {{ task.title }}">Edit Task</a>
+                        <!-- When created -->
                         <p class="text-muted small">{{ task.created_on }}</p>
                         {% endfor %}
                     </div>

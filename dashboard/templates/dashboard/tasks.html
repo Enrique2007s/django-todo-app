@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
+<!-- tasks: show and manage board tasks -->
 {% block content %}
 <div class="container py-4">
+    <!-- Back → dashboard -->
     <a href="{% url 'my-dashboard' %}" class="btn btn-sm mb-3" aria-label="Back to dashboard">&larr; Back to Dashboard</a>
     <div class="text-center mb-4">
+        <!-- Board title + excerpt -->
         <h1 id="boardTitle" class="h3 mb-2 task-title">{{ board.title }}</h1>
         <p id="boardDescription" class="text-muted mb-0 task-subtitle">{{ board.excerpt }}</p>
     </div>
@@ -14,8 +17,10 @@
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
                     <div class="text-center mb-4">
+                        <!-- Tasks -->
                         <h2 id="tasksHeading" class="h5 mb-3">Tasks</h2>
                         {% if user.is_authenticated %}
+                        <!-- Form posts to `tasks`. Title limit: 65 chars. -->
                         <form method="POST" action="{% url 'tasks' board.slug %}" aria-labelledby="tasksHeading" aria-describedby="boardTitle boardDescription">
                             {% csrf_token %}
                             {{ form.title|as_crispy_field }}
@@ -28,6 +33,7 @@
                         <div class="mt-4" role="list" aria-label="Task list">
                             {% for task in tasks %}
                             <div class="task-item mb-3 p-3 border rounded" role="listitem" aria-labelledby="taskTitle-{{ task.id }}">
+                                <!-- Title (id used) -->
                                 <p id="taskTitle-{{ task.id }}" class="task-title-text {% if task.is_completed %}task-completed{% endif %} mb-2">{{ task.title }}</p>
                                 <div class="d-flex justify-content-center gap-2 mb-2" aria-hidden="false">
                                     {% if user.is_authenticated %}
@@ -35,6 +41,7 @@
                                     <a href="{% url 'delete-task' task.id %}" class="btn btn-sm delete-task-btn delete-task-btn-background" aria-label="Delete task {{ task.title }}">Delete Task</a>
                                     {% endif %}
                                 </div>
+                                <!-- Date -->
                                 <p class="task-meta small mb-0">{{ task.created_on }}</p>
                             </div>
                             {% endfor %}

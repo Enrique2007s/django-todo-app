@@ -7,12 +7,13 @@
         <div class="col-12 col-lg-8 col-xl-6">
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
+                    <!-- Make sure user is authenticated -->
                     {% if user.is_authenticated %}
                         <div class="text-center mb-4">
                             <h1 id="createBoardHeading" class="h4 mb-2">Create your Board</h1>
                             <p id="createBoardIntro" class="text-muted mb-0">Give your board a title (required) and a short description (optional).</p>
                         </div>
-
+                        <!-- Create Board Form -->
                         <form method="POST" aria-labelledby="createBoardHeading" aria-describedby="createBoardIntro">
                             {% csrf_token %}
                             {{ form|crispy }}
@@ -21,6 +22,7 @@
                                 <button type="submit" class="btn btn-sm create-board-btn create-board-btn-background">Create Board</button>
                             </div>
                         </form>
+                    <!-- If user is not authenticated -->
                     {% else %}
                         <p class="text-center mb-0"><strong>Log in to create a board.</strong></p>
                         <div class="d-flex justify-content-center gap-2 mt-3">
