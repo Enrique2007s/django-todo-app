@@ -22,12 +22,19 @@ class Board(models.Model):
 class Task(models.Model):
     title = models.CharField(max_length=200)
     is_completed = models.BooleanField(default=False)
-    board = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='tasks')
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks')
+    board = models.ForeignKey(
+        Board, on_delete=models.CASCADE, related_name='tasks'
+    )
+    owner = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='tasks'
+    )
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-created_on']
 
     def __str__(self):
-        return f'Task: {self.title}, in board: {self.board}, owned by {self.owner}'
+        return (
+            f'Task: {self.title}, in board: {self.board}, '
+            f'owned by {self.owner}'
+        )

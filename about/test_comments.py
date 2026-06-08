@@ -21,8 +21,8 @@ class TestCommentForm(TestCase):
         form = CommentForm({
             'content': ''
         })
-        self.assertFalse(form.is_valid(),
-        msg="Form should be invalid for blank content")
+        self.assertFalse(
+            form.is_valid(), msg="Form should be invalid for blank content")
         self.assertIn('content', form.errors)
         self.assertEqual(form.errors['content'], ['This field is required.'])
 

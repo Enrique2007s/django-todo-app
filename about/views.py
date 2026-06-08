@@ -13,7 +13,9 @@ def about(request):
     # Handle comment submission
     if request.method == 'POST':
         if not request.user.is_authenticated:
-            messages.error(request, 'You must be logged in to leave a comment.')
+            messages.error(
+                request, 'You must be logged in to leave a comment.'
+            )
             return redirect('{ url "account_login" }')
 
         form = CommentForm(request.POST)
