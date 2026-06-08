@@ -85,11 +85,20 @@ No bugs were found at the time of turning the project in.
 
 # Deployment
 These are the following steps I took to deploy my project into Heroku
-1-) Have the procfile
+1-) Create a Heroku Account
+
+2-) Create an app and name it(choose closest region)
+
+1-) Have the procfile in your code environment(or github repo)
+
 2-) Connect github repo to Heroku
-3-) add necessary code for deployment onto Heroku(and dont forget the config vars!).
+
+3-) Add necessary code for deployment onto Heroku(and dont forget the config vars!)
+
 4-) Once you have added all necessary code, go to Heroku
+
 5-) Deploy your project!
+
 6-) If there are any errors, check the build logs. They should tell you what is wrong
 
 Link to page: https://todo-django-dc3033ac6a2a.herokuapp.com/
