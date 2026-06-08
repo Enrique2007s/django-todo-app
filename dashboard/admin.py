@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Board, Task
 from django_summernote.admin import SummernoteModelAdmin
+from .models import Board, Task
 
 
 # Register your models here.
