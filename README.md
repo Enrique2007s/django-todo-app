@@ -75,6 +75,7 @@ In this part of the site, users are able to log in with an existing account. In 
 
 All testing is within this document:
 https://docs.google.com/document/d/1rtWb8XeWTFxwjWgjk6J3qSCY_4pcV_AR4CcoiFuHEHw/edit?usp=sharing
+Javascript testing(although minimal) was done manually in tasks(character count/200)
 
 <img width="503" height="402" alt="image" src="https://github.com/user-attachments/assets/5f7f5047-1c5d-4428-b4c8-4b5efa146a7e" />
 
