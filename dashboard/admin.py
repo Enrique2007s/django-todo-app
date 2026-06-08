@@ -6,6 +6,12 @@ from .models import Board, Task
 # Register your models here.
 @admin.register(Board)
 class BoardAdmin(SummernoteModelAdmin):
+    """
+    Admin interface for the Board model, providing a user-friendly way to
+    manage boards in the Django admin site. It includes features such as
+    displaying key fields, searching, filtering, and automatically generating
+    slugs.
+    """
     list_display = ('title', 'owner', 'created_on')
     search_fields = ('title', 'owner__username', 'created_on')
     prepopulated_fields = {'slug': ('title',)}
@@ -14,6 +20,12 @@ class BoardAdmin(SummernoteModelAdmin):
 
 @admin.register(Task)
 class TaskAdmin(SummernoteModelAdmin):
+    """
+    Admin interface for the Task model, providing a user-friendly way to
+    manage tasks in the Django admin site. It includes features such as
+    displaying key fields, searching, filtering, and automatically generating
+    slugs.
+    """
     list_display = ('title', 'board', 'owner', 'is_completed', 'created_on')
     search_fields = ('title', 'board__title', 'owner__username', 'created_on')
     list_filter = ('is_completed', 'created_on', 'owner')

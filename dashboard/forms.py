@@ -3,6 +3,10 @@ from .models import Board, Task
 
 
 class BoardForm(forms.ModelForm):
+    """
+    A form for creating and updating Board instances, with custom widgets
+    for the title and excerpt fields to enhance user experience.
+    """
     title = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'Board title'})
     )
@@ -19,6 +23,10 @@ class BoardForm(forms.ModelForm):
 
 
 class TaskForm(forms.ModelForm):
+    """
+    A form for creating and updating Task instances, with a custom widget
+    for the title field to enhance user experience.
+    """
     title = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'Add a new task here!'}),
         error_messages={
