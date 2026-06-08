@@ -91,6 +91,11 @@ These are the following steps I took to deploy my project into Heroku
 5-) Deploy your project!
 6-) If there are any errors, check the build logs. They should tell you what is wrong
 
+Link to page: https://todo-django-dc3033ac6a2a.herokuapp.com/
+You will be unregistered once you enter.
+
+If previous link does not work, use: https://todo-django-dc3033ac6a2a.herokuapp.com/about/
+It will direct you to the about page.
 
 # Credits
 
@@ -104,7 +109,9 @@ Bootstrap for its amazing library and large amount of classes.
 
 Google Fonts for the fonts it provides.
 
-notengoenie for special characters
+notengoenie for special characters.
 
 ### Notes:
-If needed, superuser credentials is found at the end of the google document
+If needed, superuser credentials is found at the end of the google document.
+There are so many things I learnt in this project that I have no doubt I chose the right profession.
+Lastly, I want to thank you for taking timeout of your day to grade my project. I know it might not be the tidiest.
