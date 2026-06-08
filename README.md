@@ -73,25 +73,38 @@ In this part of the site, users are able to log in with an existing account. In 
 
 # Testing
 
-HTML:
+All testing is within this document:
+https://docs.google.com/document/d/1rtWb8XeWTFxwjWgjk6J3qSCY_4pcV_AR4CcoiFuHEHw/edit?usp=sharing
+
+<img width="503" height="402" alt="image" src="https://github.com/user-attachments/assets/5f7f5047-1c5d-4428-b4c8-4b5efa146a7e" />
 
 
+### Bugs
+No bugs were found at the time of turning the project in.
+
+# Deployment
+These are the following steps I took to deploy my project into Heroku
+1-) Have the procfile
+2-) Connect github repo to Heroku
+3-) add necessary code for deployment onto Heroku(and dont forget the config vars!).
+4-) Once you have added all necessary code, go to Heroku
+5-) Deploy your project!
+6-) If there are any errors, check the build logs. They should tell you what is wrong
 
 
+# Credits
 
+EMMETT: EMMETT was an amazing tool to have in the code editor. It really helped me out with repetitive things such as the navbar and creating different versions of the models. Also, it helped out tremendously with the accessibility side of the website, I even learnt things I didnt even know existed! It also saved up so much time.
 
+Deepseek: deepseek helped me develop my logic and understand how the DTL(Django Template Language) works in a great way.
 
+My father and mother, for giving me support though the development process and giving suggestions once in a while.
 
+Bootstrap for its amazing library and large amount of classes.
 
+Google Fonts for the fonts it provides.
 
+notengoenie for special characters
 
-
-
-
-
-
-
-
-
-
-
+### Notes:
+If needed, superuser credentials is found at the end of the google document
