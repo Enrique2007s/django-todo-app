@@ -91,11 +91,16 @@ These are the following steps I took to deploy my project into Heroku
 5-) Deploy your project!
 6-) If there are any errors, check the build logs. They should tell you what is wrong
 
-Link to page: https://todo-django-dc3033ac6a2a.herokuapp.com/
+Link to page: 
 You will be unregistered once you enter.
 
-If previous link does not work, use: https://todo-django-dc3033ac6a2a.herokuapp.com/about/
+If previous link does not work, use: 
 It will direct you to the about page.
+
+Development process for ERD and Wireframes:
+https://docs.google.com/document/d/1rpX2EmY4bHr1ac4kJ2SJhboeXRH7BB_2874Y3nXyav0/edit?usp=sharing
+<img width="527" height="426" alt="image" src="https://github.com/user-attachments/assets/f1de4ee7-5afd-4aad-bda3-44399d589593" />
+
 
 # Credits
 
