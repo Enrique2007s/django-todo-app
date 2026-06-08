@@ -101,7 +101,8 @@ def createBoard(request):
 
 def tasks(request, slug):
     """
-    Displays the tasks for a specific board, allowing users to view and add tasks.
+    Displays the tasks for a specific board,
+    allowing users to view and add tasks.
     Ensures that only the owner of the board can access its tasks.
 
     displays an instance of :model:`Board` based on the provided slug and the
@@ -153,7 +154,8 @@ def updateTask(request, pk):
     If the user is not authenticated or does not own the task
     **context**
     ``form``:
-    An instance of TaskForm pre-filled with the existing task content for editing.
+    An instance of TaskForm pre-filled with the existing task content for
+    editing.
     **template**
     ``dashboard/update-task.html``:
     """
