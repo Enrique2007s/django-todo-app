@@ -15,6 +15,7 @@
                         <form method="POST" action="{% url 'update-task' task.id %}" aria-labelledby="editTaskHeading">
                             {% csrf_token %}
                             {{ form|crispy }}
+                            <a href="{% url 'tasks' task.board.slug %}" class="btn btn-secondary" aria-label="Cancel and return to the task list">Cancel</a>
                             <input class="btn submit-button-background" type="submit" name="Update Task" aria-label="Update task {{ task.title }}">
                         </form>
 
