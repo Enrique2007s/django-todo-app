@@ -60,9 +60,9 @@
     </div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener("DOMContentLoaded", function () {
         const taskTitleInput = document.querySelector('input[name="title"]');
-        const taskCharCounter = document.getElementById('taskCharCounter');
+        const taskCharCounter = document.getElementById("taskCharCounter");
 
         if (!taskTitleInput || !taskCharCounter) {
             return;
@@ -70,11 +70,11 @@
 
         const updateTaskCharCounter = function () {
             const currentCount = taskTitleInput.value.length;
-            taskCharCounter.textContent = currentCount + ' / 200 characters used';
+        taskCharCounter.textContent = currentCount + " / 200 characters used";
         };
 
         updateTaskCharCounter();
-        taskTitleInput.addEventListener('input', updateTaskCharCounter);
+        taskTitleInput.addEventListener("input", updateTaskCharCounter);
     });
 </script>
 {% endblock content %}
